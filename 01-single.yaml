@@ -1,0 +1,7 @@
+---
+- hosts: node_1
+  tasks:
+    - name: "Create Directory"
+      file:
+        path: "/home/ubuntu/01-single.txt"
+        state: touch
