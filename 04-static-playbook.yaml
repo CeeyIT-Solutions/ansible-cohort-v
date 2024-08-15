@@ -1,14 +1,17 @@
 ---
 - name: Deploy Static Web Page
   hosts: group
+  become: true
   tasks:
     - name: "Install Apache"
       apt:
         name: apache2
         update_cache: true
+      when: ansible_distribution == "Ubuntu"
 
     - name: "Copy Static file"
       copy:
         src: static.hmtl
         dest: /var/www/html
         force: true
+      when: ansible_distribution == "Ubuntu"
