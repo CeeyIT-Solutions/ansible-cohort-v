@@ -1,0 +1,26 @@
+---
+- name: First Play
+  hosts: node_1
+  tasks:
+    - name: "Create Directory"
+      file:
+        path: "/home/ubuntu/03-multi"
+        state: directory
+
+    - name: "Create File"
+      file:
+        path: "/home/ubuntu/02-multi.txt"
+        state: touch
+
+- name: Second Play
+  hosts: node_2
+  tasks:
+    - name: "Create Directory"
+      file:
+        path: "/home/ubuntu/03-multi"
+        state: directory
+
+    - name: "Create File"
+      file:
+        path: "/home/ubuntu/02-multi.txt"
+        state: touch
