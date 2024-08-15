@@ -1,4 +1,5 @@
 ---
+- name: Single Play
 - hosts: node_1
   tasks:
     - name: "Create Directory"
