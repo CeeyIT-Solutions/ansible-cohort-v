@@ -1,0 +1,14 @@
+---
+- name: Deploy Static Web Page
+  hosts: group
+  tasks:
+    - name: "Install Apache"
+      apt:
+        name: apache2
+        update_cache: true
+
+    - name: "Copy Static file"
+      copy:
+        src: static.hmtl
+        dest: /var/www/html
+        force: true
