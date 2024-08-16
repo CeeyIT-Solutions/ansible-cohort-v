@@ -9,9 +9,14 @@
         update_cache: true
       when: ansible_distribution == "Ubuntu"
 
+    - name: "Install Apache"
+      yum:
+        name: httpd
+        update_cache: true
+      when: ansible_distribution == "Amazon"
+
     - name: "Copy Static file"
       copy:
         src: static.html
         dest: /var/www/html
         force: true
-      when: ansible_distribution == "Ubuntu"
