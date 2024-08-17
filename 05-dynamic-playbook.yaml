@@ -1,0 +1,28 @@
+---
+- name: Deploy Static Web Page
+  hosts: group
+  become: true
+  tasks:
+    - name: "Install Apache"
+      apt:
+        name: apache2
+        update_cache: true
+      when: ansible_distribution == "Ubuntu"
+
+    - name: "Install Apache"
+      yum:
+        name: httpd
+        update_cache: true
+      when: ansible_distribution == "Amazon"
+
+    - name: "Start Apache"
+      service:
+        name: httpd
+        state: started
+      when: ansible_distribution == "Amazon"
+
+    - name: "Render Template File"
+      template:
+        src: static.j2
+        dest: /var/www/html
+        force: true
